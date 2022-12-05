@@ -35,7 +35,7 @@ void main() {
     diffuse = diff * diffuse;
     specular = spec * specular;
 
-    vec3 result = ambient + diffuse + specular;
+    vec3 result = (ambient + diffuse + specular) / 3.0f;
 
     FragColor = vec4(result, 1.0);
 };

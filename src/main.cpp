@@ -126,13 +126,13 @@ int main() {
     glfwSetScrollCallback(window, scroll_callback);
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
-    ourModel.loadModel("media/table/table.obj");
+    ourModel.loadModel("media/door/door.obj");
 
     // render loop
     while (!glfwWindowShouldClose(window)) {
         float currentTime = (float)glfwGetTime();
         glEnable(GL_DEPTH_TEST);
-        glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+        glClearColor(0.9f, 0.8f, 0.5f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         float currentFrame = (float)currentTime;
