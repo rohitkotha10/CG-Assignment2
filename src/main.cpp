@@ -140,13 +140,14 @@ int main() {
         lastFrame = currentFrame;
 
         myProgram.use();
-        glDepthFunc(GL_LESS);
+        glm::mat4 projection = glm::perspective(glm::radians(fov), screen_aspect, 0.1f, 100.0f);
+        glm::mat4 view = glm::lookAt(cameraPos, cameraPos + cameraFront, worldUp);
+
         glm::mat4 model = glm::mat4(1.0f);
         model = glm::scale(model, glm::vec3(0.3f));
-        glm::mat4 view = glm::lookAt(cameraPos, cameraPos + cameraFront, worldUp);
-        glm::mat4 projection = glm::perspective(glm::radians(fov), screen_aspect, 0.1f, 100.0f);
-        myProgram.setMat4("view_matrix", view);
+
         myProgram.setMat4("projection_matrix", projection);
+        myProgram.setMat4("view_matrix", view);
         myProgram.setMat4("model_matrix", model);
 
         myProgram.setVec3("lightPos", glm::vec3(2.0f, 2.0f, 2.0f));

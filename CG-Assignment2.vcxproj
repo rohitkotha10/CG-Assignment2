@@ -141,6 +141,10 @@
     <ClCompile Include="vendor\glad.c" />
   </ItemGroup>
   <ItemGroup>
+    <None Include=".clang-format" />
+    <None Include=".gitattributes" />
+    <None Include=".gitignore" />
+    <None Include="README.md" />
     <None Include="src\fs.shader" />
     <None Include="src\vs.shader" />
   </ItemGroup>

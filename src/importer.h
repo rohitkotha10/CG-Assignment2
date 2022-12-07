@@ -6,7 +6,6 @@
 #include <assimp/postprocess.h>
 
 namespace CG {
-
     class Importer {
     public:
         void loadModel(std::string path);
@@ -21,5 +20,4 @@ namespace CG {
         Mesh processMesh(aiMesh* mesh, const aiScene* scene);
         glm::vec4 loadColor(aiMaterial* mat);
     };
-
 }  // namespace CG

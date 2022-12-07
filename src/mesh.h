@@ -1,10 +1,7 @@
 #pragma once
 #include "program.h"
 
-#include <vector>
-
 namespace CG {
-
     struct Vertex {
         glm::vec3 position;
         glm::vec3 normal;
@@ -12,13 +9,13 @@ namespace CG {
 
     class Mesh {
     public:
-        void createMesh(std::vector<Vertex> vertices, std::vector<GLuint> indices, glm::vec4 color);
-        void draw(Program& program);
-        void shutdown();
-
         std::vector<Vertex> vertices;
         std::vector<GLuint> indices;
         glm::vec4 color;
+
+        void createMesh(std::vector<Vertex> vertices, std::vector<GLuint> indices, glm::vec4 color);
+        void draw(Program& program);
+        void shutdown();
 
     private:
         GLuint vao;

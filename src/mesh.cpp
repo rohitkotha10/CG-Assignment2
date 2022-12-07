@@ -3,7 +3,6 @@
 using namespace std;
 
 namespace CG {
-
     void Mesh::createMesh(vector<Vertex> vertices, vector<GLuint> indices, glm::vec4 color) {
         this->vertices = vertices;
         this->indices = indices;
