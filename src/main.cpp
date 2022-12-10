@@ -113,6 +113,7 @@ int main() {
     std::cout << glGetString(GL_RENDERER) << std::endl << std::endl;
 
     Program myProgram;
+    Importer man;
     Importer ourModel;
 
     // shader compilation
@@ -127,7 +128,7 @@ int main() {
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
     ourModel.loadModel("media/door/door.obj");
-
+    man.loadModel("media/man/man.obj");
     // render loop
     while (!glfwWindowShouldClose(window)) {
         float currentTime = (float)glfwGetTime();
@@ -155,8 +156,14 @@ int main() {
 
         ourModel.draw(myProgram);
 
+        model = glm::scale(glm::mat4(1.0f), glm::vec3(0.2f));
+        model = glm::rotate(model, 3.14f, glm::vec3(0.0f, 1.0f, 0.0f));
+        model = glm::translate(model, glm::vec3(5.0f, 0.0f, -10.0f));
+        myProgram.setMat4("model_matrix", model);
+
+        man.draw(myProgram);
         // process inputs
-        const float cameraSpeed = 2.5f * deltaTime;  // adjust accordingly
+        const float cameraSpeed = 3.5f * deltaTime;  // adjust accordingly
 
         if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) cameraPos += cameraSpeed * cameraFront;
         if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) cameraPos -= cameraSpeed * cameraFront;
