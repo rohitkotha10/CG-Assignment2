@@ -23,7 +23,7 @@ float deltaTime;
 float lastFrame;
 
 glm::vec3 worldUp = glm::vec3(0.0f, 1.0f, 0.0f);
-glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
+glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 20.0f);
 glm::vec3 cameraTarget = glm::vec3(0.0f, 0.0f, 0.0f);
 glm::vec3 cameraFront = glm::normalize(cameraTarget - cameraPos);          // also facing the scene
 glm::vec3 cameraRight = glm::normalize(glm::cross(cameraFront, worldUp));  // camera is in left hand system
@@ -114,10 +114,12 @@ int main() {
 
     Program myProgram;
     Importer man;
-    Importer ourModel;
+    Mesh myPlane;
+    Importer door;
+    Importer table;
 
     // shader compilation
-    myProgram.create("src/vs.shader", "src/fs.shader");
+    myProgram.create("src/shaders/vs.shader", "src/shaders/fs.shader");
 
     // startup processes
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
@@ -127,8 +129,10 @@ int main() {
     glfwSetScrollCallback(window, scroll_callback);
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
-    ourModel.loadModel("media/door/door.obj");
+    door.loadModel("media/door/door.obj");
+    myPlane.createPlaneColor(glm::vec3(0.0f, -0.5f, 0.0f), 50.0f, glm::vec4(0.6f, 0.5f, 0.3f, 1.0f));
     man.loadModel("media/man/man.obj");
+    table.loadModel("media/table/table.obj");
     // render loop
     while (!glfwWindowShouldClose(window)) {
         float currentTime = (float)glfwGetTime();
@@ -146,6 +150,8 @@ int main() {
 
         glm::mat4 model = glm::mat4(1.0f);
         model = glm::scale(model, glm::vec3(0.3f));
+        model = glm::translate(model, glm::vec3(0.0f, -1.0f, 0.0f));
+
 
         myProgram.setMat4("projection_matrix", projection);
         myProgram.setMat4("view_matrix", view);
@@ -154,14 +160,25 @@ int main() {
         myProgram.setVec3("lightPos", glm::vec3(2.0f, 2.0f, 2.0f));
         myProgram.setVec3("viewPos", glm::vec3(cameraPos));
 
-        ourModel.draw(myProgram);
+        door.draw(myProgram);
 
         model = glm::scale(glm::mat4(1.0f), glm::vec3(0.2f));
         model = glm::rotate(model, 3.14f, glm::vec3(0.0f, 1.0f, 0.0f));
-        model = glm::translate(model, glm::vec3(5.0f, 0.0f, -10.0f));
+        model = glm::translate(model, glm::vec3(5.0f, 1.0f, -10.0f));
         myProgram.setMat4("model_matrix", model);
 
         man.draw(myProgram);
+
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, glm::vec3(3.0f, -0.5f, 6.0f));
+        myProgram.setMat4("model_matrix", model);
+
+        table.draw(myProgram);
+
+        model = glm::mat4(1.0f);
+        myProgram.setMat4("model_matrix", model);
+
+        myPlane.draw(myProgram);
         // process inputs
         const float cameraSpeed = 3.5f * deltaTime;  // adjust accordingly
 
@@ -190,7 +207,10 @@ int main() {
 
     // shutdown
     myProgram.shutdown();
-    ourModel.shutdown();
+    myPlane.shutdown();
+    door.shutdown();
+    man.shutdown();
+    table.shutdown();
     glfwDestroyWindow(window);
     glfwTerminate();
 }

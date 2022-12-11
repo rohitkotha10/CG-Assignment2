@@ -29,6 +29,31 @@ namespace CG {
         glBindVertexArray(0);
     }
 
+    void Mesh::createPlaneColor(glm::vec3 center, float side, glm::vec4 color) {
+        float hside = side / 2;
+
+        Vertex a0;
+        a0.position = glm::vec3(center.x - hside, center.y, center.z - hside);
+        a0.normal = glm::vec3(0.0f, 1.0f, 0.0f);
+
+        Vertex a1;
+        a1.position = glm::vec3(center.x + hside, center.y, center.z - hside);
+        a1.normal = glm::vec3(0.0f, 1.0f, 0.0f);
+
+        Vertex a2;
+        a2.position = glm::vec3(center.x + hside, center.y, center.z + hside);
+        a2.normal = glm::vec3(0.0f, 1.0f, 0.0f);
+
+        Vertex a3;
+        a3.position = glm::vec3(center.x - hside, center.y, center.z + hside);
+        a3.normal = glm::vec3(0.0f, 1.0f, 0.0f);
+
+        vector<Vertex> vertices = {a0, a1, a2, a3};
+        vector<GLuint> indices = {0, 1, 2, 2, 3, 0};
+
+        this->createMesh(vertices, indices, color);
+    }
+
     void Mesh::draw(Program& program) {
         glBindVertexArray(vao);
         program.setVec4("material.color", this->color);

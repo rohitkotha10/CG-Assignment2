@@ -32,8 +32,8 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\fs.shader" />
-    <None Include="src\vs.shader" />
+    <None Include="src\shaders\fs.shader" />
+    <None Include="src\shaders\vs.shader" />
     <None Include=".clang-format" />
     <None Include=".gitattributes" />
     <None Include=".gitignore" />

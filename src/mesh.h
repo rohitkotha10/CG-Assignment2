@@ -14,6 +14,7 @@ namespace CG {
         glm::vec4 color;
 
         void createMesh(std::vector<Vertex> vertices, std::vector<GLuint> indices, glm::vec4 color);
+        void createPlaneColor(glm::vec3 center, float side, glm::vec4 color);
         void draw(Program& program);
         void shutdown();
 

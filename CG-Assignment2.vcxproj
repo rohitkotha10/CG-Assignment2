@@ -145,8 +145,8 @@
     <None Include=".gitattributes" />
     <None Include=".gitignore" />
     <None Include="README.md" />
-    <None Include="src\fs.shader" />
-    <None Include="src\vs.shader" />
+    <None Include="src\shaders\fs.shader" />
+    <None Include="src\shaders\vs.shader" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\importer.h" />
