@@ -23,8 +23,8 @@ float deltaTime;
 float lastFrame;
 
 glm::vec3 worldUp = glm::vec3(0.0f, 1.0f, 0.0f);
-glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 20.0f);
-glm::vec3 cameraTarget = glm::vec3(0.0f, 0.0f, 0.0f);
+glm::vec3 cameraPos = glm::vec3(0.0f, 5.0f, 20.0f);
+glm::vec3 cameraTarget = glm::vec3(0.0f, 5.0f, 0.0f);
 glm::vec3 cameraFront = glm::normalize(cameraTarget - cameraPos);          // also facing the scene
 glm::vec3 cameraRight = glm::normalize(glm::cross(cameraFront, worldUp));  // camera is in left hand system
 glm::vec3 cameraUp = glm::normalize(glm::cross(cameraFront, cameraRight));
@@ -157,7 +157,8 @@ int main() {
         myProgram.setMat4("view_matrix", view);
         myProgram.setMat4("model_matrix", model);
 
-        myProgram.setVec3("lightPos", glm::vec3(2.0f, 2.0f, 2.0f));
+        myProgram.setVec3("lightPos1", glm::vec3(4.0f, 5.0f, -10.0f));
+        myProgram.setVec3("lightPos2", glm::vec3(-5.0f, 5.0f, 10.0f));
         myProgram.setVec3("viewPos", glm::vec3(cameraPos));
 
         door.draw(myProgram);
