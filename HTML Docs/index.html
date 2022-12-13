@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <title>CG Assignment 2</title>
+</head>
+
+<body>
+    <h1 class="container pt-3 pb-3">Assignment 2</h1>
+    <div class="container">
+        <h4>Group Members</h4>
+        <ul class="list-group pb-5">
+            <li class="list-group-item">Yash Ratnani - 2020A7PS0039H</li>
+            <li class="list-group-item">Rohit Kotha Reddy - 2020A7PS1890H</li>
+            <li class="list-group-item">Shubh Badjate - 2020A7PS0028H</li>
+            <li class="list-group-item">Yadav Ankit Ramesh - 2020A7PS2046H</li>
+        </ul>
+        <h3>Rendered Scene</h3>
+        <img src="./images/1.jpg" alt="" srcset="" class="pb-3">
+        <h3>
+            What We Implemented
+        </h3>
+        <ul>
+            <li>Importer for Wavefront(.obj) Files with Colors using assimp</li>
+            <li>Blinn-Phong Shading Model for our Scene</li>
+            <li>Implemented Creating Meshes in Modern OpenGL</li>
+            <li>Camera System for our Scene</li>
+        </ul>
+    <h3>
+        Build Instructions
+    </h3>
+    <ul>
+<li> This is tested on Windows </li>
+<li> Required Visual Studio 2022 with C++ Desktop Environment </li>
+<li><a href="https://drive.google.com/drive/folders/1elWUWQjiuJYybxps1IM10k3pQS_cPSPV">media</a> files can be found Here </li>
+<li> Open the project using Visual Studio 2022 and Build the project </li>
+<li> After successfull build, the output files are written to bin\CG-Assignment2\ </li>
+<li> you need to copy the assimp dll file which can be found at dependencies\dll\assimp-vc143-mt.dll manually to the output folder above </li>
+<li> make sure that media files are placed in the right directory before running the application </li>
+</ul>
+    <h3>
+        Third Party Libraries and Dependencies
+    </h3>
+    <ul>
+        <li>
+            glfw
+
+        </li>
+        <li>
+            glad
+        </li>
+        <li>
+            glm math
+
+        </li>
+        <li>
+            assimp model importer (needs dll at runtime)
+        </li>
+    </ul>
+    <h3>
+        References
+    </h3>
+    <ol>
+        <li> <a href="https://www.cgtrader.com/">Models</a> </li>
+        <li> <a href="learnopengl.com">learnopengl.com</a> </li>
+        <li><a href="https://www.blender.org/">Blender</a>
+            </li>
+    </ol>
+    </div>
+</body>
+
+</html>
