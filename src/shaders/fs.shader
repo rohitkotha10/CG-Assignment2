@@ -1,5 +1,5 @@
 #version 450 core
-
+// Blinn Phong Shading
 out vec4 FragColor;
 
 in vec3 vNormal;

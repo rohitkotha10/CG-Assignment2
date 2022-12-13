@@ -1,0 +1,225 @@
+\hypertarget{main_8cpp_source}{}\doxysection{main.\+cpp}
+\label{main_8cpp_source}\index{src/main.cpp@{src/main.cpp}}
+\mbox{\hyperlink{main_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{importer_8h}{importer.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00002}00002 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{mesh_8h}{mesh.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00004}00004 \textcolor{keyword}{using namespace }std;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00005}00005 \textcolor{keyword}{using namespace }\mbox{\hyperlink{namespace_c_g}{CG}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00006}00006 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00010}\mbox{\hyperlink{main_8cpp_ac21731ba101e28334c34543121caa841}{00010}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{main_8cpp_ac21731ba101e28334c34543121caa841}{firstMouse}} = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00011}\mbox{\hyperlink{main_8cpp_adbe3ee8539b25ee048189f76945738a4}{00011}} \textcolor{keywordtype}{int} \mbox{\hyperlink{main_8cpp_adbe3ee8539b25ee048189f76945738a4}{press}} = 0;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00013}\mbox{\hyperlink{main_8cpp_aa4d434a8b93410ea0ed660e48dac41c6}{00013}} \textcolor{keywordtype}{int} \mbox{\hyperlink{main_8cpp_aa4d434a8b93410ea0ed660e48dac41c6}{screen\_width}} = 1280;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00014}\mbox{\hyperlink{main_8cpp_a3b4a1bd850991355b91c7bfc15247d49}{00014}} \textcolor{keywordtype}{int} \mbox{\hyperlink{main_8cpp_a3b4a1bd850991355b91c7bfc15247d49}{screen\_height}} = 720;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00015}\mbox{\hyperlink{main_8cpp_a0f82303de0f050cbc8ffe60f3769f1c9}{00015}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{main_8cpp_a0f82303de0f050cbc8ffe60f3769f1c9}{isFullScreen}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00016}\mbox{\hyperlink{main_8cpp_aaa07b9226372fe795cd4c73aa1f2071a}{00016}} \textcolor{keywordtype}{float} \mbox{\hyperlink{main_8cpp_aaa07b9226372fe795cd4c73aa1f2071a}{screen\_aspect}} = (float)\mbox{\hyperlink{main_8cpp_aa4d434a8b93410ea0ed660e48dac41c6}{screen\_width}} / (\textcolor{keywordtype}{float})\mbox{\hyperlink{main_8cpp_a3b4a1bd850991355b91c7bfc15247d49}{screen\_height}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00020}\mbox{\hyperlink{main_8cpp_abfd94a01fc71278021802ca0d1e25e16}{00020}} \textcolor{keywordtype}{float} \mbox{\hyperlink{main_8cpp_abfd94a01fc71278021802ca0d1e25e16}{fov}} = 45.0f;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00025}\mbox{\hyperlink{main_8cpp_a4664c5d930c290e6f82141a070cbea46}{00025}} \textcolor{keywordtype}{float} \mbox{\hyperlink{main_8cpp_a4664c5d930c290e6f82141a070cbea46}{lastX}} = \mbox{\hyperlink{main_8cpp_aa4d434a8b93410ea0ed660e48dac41c6}{screen\_width}} / 2.0f;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00029}\mbox{\hyperlink{main_8cpp_a9d5b8dfd025caf1c0ed043132515f587}{00029}} \textcolor{keywordtype}{float} \mbox{\hyperlink{main_8cpp_a9d5b8dfd025caf1c0ed043132515f587}{lastY}} = \mbox{\hyperlink{main_8cpp_a3b4a1bd850991355b91c7bfc15247d49}{screen\_height}} / 2.0f;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00034}\mbox{\hyperlink{main_8cpp_a282e7d4378d4a18a805b8980295ac86c}{00034}} \textcolor{keywordtype}{float} \mbox{\hyperlink{main_8cpp_a282e7d4378d4a18a805b8980295ac86c}{pitch}} = 0;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00038}\mbox{\hyperlink{main_8cpp_a7efc219781df4a1e281cb5d348b7fbf9}{00038}} \textcolor{keywordtype}{float} \mbox{\hyperlink{main_8cpp_a7efc219781df4a1e281cb5d348b7fbf9}{yaw}} = -\/90;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00039}00039 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00043}\mbox{\hyperlink{main_8cpp_a1a61318ed6aa02b4ff346e7eb8f68891}{00043}} \textcolor{keywordtype}{float} \mbox{\hyperlink{main_8cpp_a1a61318ed6aa02b4ff346e7eb8f68891}{deltaTime}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00047}\mbox{\hyperlink{main_8cpp_a518a497d888d805d5f368bbb91b54a6c}{00047}} \textcolor{keywordtype}{float} \mbox{\hyperlink{main_8cpp_a518a497d888d805d5f368bbb91b54a6c}{lastFrame}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00048}00048 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00049}\mbox{\hyperlink{main_8cpp_a2efc1e4b509cc5f0c2bffdfc7deb98b3}{00049}} glm::vec3 \mbox{\hyperlink{main_8cpp_a2efc1e4b509cc5f0c2bffdfc7deb98b3}{worldUp}} = glm::vec3(0.0f, 1.0f, 0.0f);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00053}\mbox{\hyperlink{main_8cpp_afcee0af49198577e804d3741b319382e}{00053}} glm::vec3 \mbox{\hyperlink{main_8cpp_afcee0af49198577e804d3741b319382e}{cameraPos}} = glm::vec3(0.0f, 5.0f, 20.0f);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00057}\mbox{\hyperlink{main_8cpp_ad2fdbd6090bd7089d3958bc6f459d05a}{00057}} glm::vec3 \mbox{\hyperlink{main_8cpp_ad2fdbd6090bd7089d3958bc6f459d05a}{cameraTarget}} = glm::vec3(0.0f, 5.0f, 0.0f);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00063}\mbox{\hyperlink{main_8cpp_a8cfa8e18baf093b4aa4f589daf057024}{00063}} glm::vec3 \mbox{\hyperlink{main_8cpp_a8cfa8e18baf093b4aa4f589daf057024}{cameraFront}} = glm::normalize(\mbox{\hyperlink{main_8cpp_ad2fdbd6090bd7089d3958bc6f459d05a}{cameraTarget}} -\/ \mbox{\hyperlink{main_8cpp_afcee0af49198577e804d3741b319382e}{cameraPos}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00067}\mbox{\hyperlink{main_8cpp_a0b1e93bd80f5dab9ddf2262e7c2206a5}{00067}} glm::vec3 \mbox{\hyperlink{main_8cpp_a0b1e93bd80f5dab9ddf2262e7c2206a5}{cameraRight}} = glm::normalize(glm::cross(\mbox{\hyperlink{main_8cpp_a8cfa8e18baf093b4aa4f589daf057024}{cameraFront}}, \mbox{\hyperlink{main_8cpp_a2efc1e4b509cc5f0c2bffdfc7deb98b3}{worldUp}}));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00071}\mbox{\hyperlink{main_8cpp_a36d5c153de5e9cf5a0efb0e7d9986683}{00071}} glm::vec3 \mbox{\hyperlink{main_8cpp_a36d5c153de5e9cf5a0efb0e7d9986683}{cameraUp}} = glm::normalize(glm::cross(\mbox{\hyperlink{main_8cpp_a8cfa8e18baf093b4aa4f589daf057024}{cameraFront}}, \mbox{\hyperlink{main_8cpp_a0b1e93bd80f5dab9ddf2262e7c2206a5}{cameraRight}}));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00072}00072 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00080}\mbox{\hyperlink{main_8cpp_a5515d805e76ce6728de3c0dc5e187c86}{00080}} \textcolor{keywordtype}{void} \mbox{\hyperlink{main_8cpp_a5515d805e76ce6728de3c0dc5e187c86}{mouse\_button\_callback}}(GLFWwindow* window, \textcolor{keywordtype}{int} button, \textcolor{keywordtype}{int} action, \textcolor{keywordtype}{int} mods) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00081}00081     \textcolor{keywordflow}{if} (button == GLFW\_MOUSE\_BUTTON\_LEFT \&\& action == GLFW\_PRESS) \mbox{\hyperlink{main_8cpp_adbe3ee8539b25ee048189f76945738a4}{press}} = 1;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00082}00082 \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00083}00083 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00090}\mbox{\hyperlink{main_8cpp_a5180f7bf2b71421af837035824a8c8ac}{00090}} \textcolor{keywordtype}{void} \mbox{\hyperlink{main_8cpp_a5180f7bf2b71421af837035824a8c8ac}{framebuffer\_size\_callback}}(GLFWwindow* window, \textcolor{keywordtype}{int} width, \textcolor{keywordtype}{int} height) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00091}00091     glViewport(0, 0, width, height);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00092}00092 \};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00093}00093 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00102}\mbox{\hyperlink{main_8cpp_ac52009ca34f13f07eac8104b5d3dfa40}{00102}} \textcolor{keywordtype}{void} \mbox{\hyperlink{main_8cpp_ac52009ca34f13f07eac8104b5d3dfa40}{keyboard\_callback}}(GLFWwindow* window, \textcolor{keywordtype}{int} key, \textcolor{keywordtype}{int} scancode, \textcolor{keywordtype}{int} action, \textcolor{keywordtype}{int} mods) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00103}00103     \textcolor{keywordflow}{if} (key == GLFW\_KEY\_ESCAPE \&\& action == GLFW\_PRESS) glfwSetWindowShouldClose(window, \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00104}00104 \};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00105}00105 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00112}\mbox{\hyperlink{main_8cpp_adb38ccad09d0a7cdac91468c335213d5}{00112}} \textcolor{keywordtype}{void} \mbox{\hyperlink{main_8cpp_adb38ccad09d0a7cdac91468c335213d5}{cursor\_callback}}(GLFWwindow* window, \textcolor{keywordtype}{double} xdpos, \textcolor{keywordtype}{double} ydpos) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00113}00113     \textcolor{keywordtype}{float} xpos = (float)xdpos;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00114}00114     \textcolor{keywordtype}{float} ypos = (float)ydpos;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00115}00115 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00116}00116     \textcolor{keywordflow}{if} (\mbox{\hyperlink{main_8cpp_ac21731ba101e28334c34543121caa841}{firstMouse}}) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00117}00117         \mbox{\hyperlink{main_8cpp_a4664c5d930c290e6f82141a070cbea46}{lastX}} = xpos;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00118}00118         \mbox{\hyperlink{main_8cpp_a9d5b8dfd025caf1c0ed043132515f587}{lastY}} = ypos;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00119}00119         \mbox{\hyperlink{main_8cpp_ac21731ba101e28334c34543121caa841}{firstMouse}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00120}00120     \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00121}00121 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00122}00122     \textcolor{keywordtype}{float} xoffset = xpos -\/ \mbox{\hyperlink{main_8cpp_a4664c5d930c290e6f82141a070cbea46}{lastX}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00123}00123     \textcolor{keywordtype}{float} yoffset = \mbox{\hyperlink{main_8cpp_a9d5b8dfd025caf1c0ed043132515f587}{lastY}} -\/ ypos;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00124}00124     \mbox{\hyperlink{main_8cpp_a4664c5d930c290e6f82141a070cbea46}{lastX}} = xpos;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00125}00125     \mbox{\hyperlink{main_8cpp_a9d5b8dfd025caf1c0ed043132515f587}{lastY}} = ypos;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00126}00126 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00127}00127     \textcolor{keywordtype}{float} sensitivity = 0.1f;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00128}00128     xoffset *= sensitivity;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00129}00129     yoffset *= sensitivity;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00130}00130 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00131}00131     \textcolor{comment}{// mouse moving horizontally gives you yaw}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00132}00132     \textcolor{comment}{// mouse moving vertically gives you pitch}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00133}00133     \mbox{\hyperlink{main_8cpp_a7efc219781df4a1e281cb5d348b7fbf9}{yaw}} += xoffset;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00134}00134     \mbox{\hyperlink{main_8cpp_a282e7d4378d4a18a805b8980295ac86c}{pitch}} += yoffset;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00135}00135 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00136}00136     \textcolor{keywordflow}{if} (\mbox{\hyperlink{main_8cpp_a282e7d4378d4a18a805b8980295ac86c}{pitch}} > 89.0f) \mbox{\hyperlink{main_8cpp_a282e7d4378d4a18a805b8980295ac86c}{pitch}} = 89.0f;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00137}00137     \textcolor{keywordflow}{if} (\mbox{\hyperlink{main_8cpp_a282e7d4378d4a18a805b8980295ac86c}{pitch}} < -\/89.0f) \mbox{\hyperlink{main_8cpp_a282e7d4378d4a18a805b8980295ac86c}{pitch}} = -\/89.0f;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00138}00138 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00139}00139     glm::vec3 direction;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00140}00140 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00141}00141     direction.x = cos(glm::radians(\mbox{\hyperlink{main_8cpp_a7efc219781df4a1e281cb5d348b7fbf9}{yaw}})) * cos(glm::radians(\mbox{\hyperlink{main_8cpp_a282e7d4378d4a18a805b8980295ac86c}{pitch}}));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00142}00142     direction.y = sin(glm::radians(\mbox{\hyperlink{main_8cpp_a282e7d4378d4a18a805b8980295ac86c}{pitch}}));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00143}00143     direction.z = sin(glm::radians(\mbox{\hyperlink{main_8cpp_a7efc219781df4a1e281cb5d348b7fbf9}{yaw}})) * cos(glm::radians(\mbox{\hyperlink{main_8cpp_a282e7d4378d4a18a805b8980295ac86c}{pitch}}));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00144}00144 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00145}00145     \mbox{\hyperlink{main_8cpp_a8cfa8e18baf093b4aa4f589daf057024}{cameraFront}} = glm::normalize(direction);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00146}00146     \mbox{\hyperlink{main_8cpp_a0b1e93bd80f5dab9ddf2262e7c2206a5}{cameraRight}} = glm::normalize(glm::cross(\mbox{\hyperlink{main_8cpp_a8cfa8e18baf093b4aa4f589daf057024}{cameraFront}}, \mbox{\hyperlink{main_8cpp_a2efc1e4b509cc5f0c2bffdfc7deb98b3}{worldUp}}));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00147}00147     \mbox{\hyperlink{main_8cpp_a36d5c153de5e9cf5a0efb0e7d9986683}{cameraUp}} = glm::normalize(glm::cross(\mbox{\hyperlink{main_8cpp_a0b1e93bd80f5dab9ddf2262e7c2206a5}{cameraRight}}, \mbox{\hyperlink{main_8cpp_a8cfa8e18baf093b4aa4f589daf057024}{cameraFront}}));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00148}00148 \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00149}00149 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00156}\mbox{\hyperlink{main_8cpp_a06ad2502008f16fbcf01dfaa7f7bc9ea}{00156}} \textcolor{keywordtype}{void} \mbox{\hyperlink{main_8cpp_a06ad2502008f16fbcf01dfaa7f7bc9ea}{scroll\_callback}}(GLFWwindow* window, \textcolor{keywordtype}{double} xoffset, \textcolor{keywordtype}{double} yoffset) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00157}00157     \mbox{\hyperlink{main_8cpp_abfd94a01fc71278021802ca0d1e25e16}{fov}} -\/= (float)yoffset;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00158}00158     \textcolor{keywordflow}{if} (\mbox{\hyperlink{main_8cpp_abfd94a01fc71278021802ca0d1e25e16}{fov}} < 1.0f) \mbox{\hyperlink{main_8cpp_abfd94a01fc71278021802ca0d1e25e16}{fov}} = 1.0f;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00159}00159     \textcolor{keywordflow}{if} (\mbox{\hyperlink{main_8cpp_abfd94a01fc71278021802ca0d1e25e16}{fov}} > 45.0f) \mbox{\hyperlink{main_8cpp_abfd94a01fc71278021802ca0d1e25e16}{fov}} = 45.0f;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00160}00160 \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00161}00161 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00162}\mbox{\hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{00162}} \textcolor{keywordtype}{int} \mbox{\hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}() \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00163}00163     GLFWwindow* window = NULL;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00164}00164 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00165}00165     glfwInit();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00166}00166     glfwWindowHint(GLFW\_CONTEXT\_VERSION\_MAJOR, 4);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00167}00167     glfwWindowHint(GLFW\_CONTEXT\_VERSION\_MINOR, 3);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00168}00168     glfwWindowHint(GLFW\_OPENGL\_PROFILE, GLFW\_OPENGL\_CORE\_PROFILE);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00169}00169     glfwWindowHint(GLFW\_RESIZABLE, \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00170}00170 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00171}00171     window = glfwCreateWindow(}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00172}00172         \mbox{\hyperlink{main_8cpp_aa4d434a8b93410ea0ed660e48dac41c6}{screen\_width}}, \mbox{\hyperlink{main_8cpp_a3b4a1bd850991355b91c7bfc15247d49}{screen\_height}}, \textcolor{stringliteral}{"{}CG Assignment"{}}, \mbox{\hyperlink{main_8cpp_a0f82303de0f050cbc8ffe60f3769f1c9}{isFullScreen}} ? glfwGetPrimaryMonitor() : NULL, NULL);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00173}00173 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00174}00174     \textcolor{keywordflow}{if} (window == NULL) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00175}00175         std::cout << \textcolor{stringliteral}{"{}Failed to create GLFW window"{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00176}00176         glfwTerminate();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00177}00177         \textcolor{keywordflow}{return} -\/1;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00178}00178     \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00179}00179 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00180}00180     glfwMakeContextCurrent(window);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00181}00181 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00182}00182     \textcolor{keywordflow}{if} (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00183}00183         std::cout << \textcolor{stringliteral}{"{}Failed to initialize GLAD"{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00184}00184         \textcolor{keywordflow}{return} -\/1;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00185}00185     \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00186}00186 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00187}00187     std::cout << glGetString(GL\_VENDOR) << std::endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00188}00188     std::cout << glGetString(GL\_VERSION) << std::endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00189}00189     std::cout << glGetString(GL\_RENDERER) << std::endl << std::endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00190}00190 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00194}00194     \mbox{\hyperlink{class_c_g_1_1_program}{Program}} myProgram;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00195}00195     \mbox{\hyperlink{class_c_g_1_1_importer}{Importer}} man;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00196}00196     \mbox{\hyperlink{class_c_g_1_1_mesh}{Mesh}} myPlane;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00197}00197     \mbox{\hyperlink{class_c_g_1_1_importer}{Importer}} door;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00198}00198     \mbox{\hyperlink{class_c_g_1_1_importer}{Importer}} table;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00199}00199 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00200}00200     \textcolor{comment}{// shader compilation}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00201}00201     myProgram.\mbox{\hyperlink{class_c_g_1_1_program_a6d30343fdcf546a75d9e5050dbb52244}{create}}(\textcolor{stringliteral}{"{}src/shaders/vs.shader"{}}, \textcolor{stringliteral}{"{}src/shaders/fs.shader"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00202}00202 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00203}00203     \textcolor{comment}{// startup processes}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00204}00204     glfwSetFramebufferSizeCallback(window, \mbox{\hyperlink{main_8cpp_a5180f7bf2b71421af837035824a8c8ac}{framebuffer\_size\_callback}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00205}00205     glfwSetKeyCallback(window, \mbox{\hyperlink{main_8cpp_ac52009ca34f13f07eac8104b5d3dfa40}{keyboard\_callback}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00206}00206     glfwSetCursorPosCallback(window, \mbox{\hyperlink{main_8cpp_adb38ccad09d0a7cdac91468c335213d5}{cursor\_callback}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00207}00207     glfwSetMouseButtonCallback(window, \mbox{\hyperlink{main_8cpp_a5515d805e76ce6728de3c0dc5e187c86}{mouse\_button\_callback}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00208}00208     glfwSetScrollCallback(window, \mbox{\hyperlink{main_8cpp_a06ad2502008f16fbcf01dfaa7f7bc9ea}{scroll\_callback}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00209}00209     glfwSetInputMode(window, GLFW\_CURSOR, GLFW\_CURSOR\_DISABLED);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00210}00210 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00211}00211     door.\mbox{\hyperlink{class_c_g_1_1_importer_a9a7448991612da0b267e89c5b61bccbb}{loadModel}}(\textcolor{stringliteral}{"{}media/door/door.obj"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00212}00212     myPlane.\mbox{\hyperlink{class_c_g_1_1_mesh_a90350f1c47dfe47fd28e244c7509fce3}{createPlaneColor}}(glm::vec3(0.0f, -\/0.5f, 0.0f), 50.0f, glm::vec4(0.6f, 0.5f, 0.3f, 1.0f));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00213}00213     man.\mbox{\hyperlink{class_c_g_1_1_importer_a9a7448991612da0b267e89c5b61bccbb}{loadModel}}(\textcolor{stringliteral}{"{}media/man/man.obj"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00214}00214     table.\mbox{\hyperlink{class_c_g_1_1_importer_a9a7448991612da0b267e89c5b61bccbb}{loadModel}}(\textcolor{stringliteral}{"{}media/table/table.obj"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00215}00215     \textcolor{comment}{// render loop}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00216}00216     \textcolor{keywordflow}{while} (!glfwWindowShouldClose(window)) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00217}00217         \textcolor{keywordtype}{float} currentTime = (float)glfwGetTime();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00218}00218         glEnable(GL\_DEPTH\_TEST);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00219}00219         glClearColor(0.9f, 0.8f, 0.5f, 1.0f);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00220}00220         glClear(GL\_COLOR\_BUFFER\_BIT | GL\_DEPTH\_BUFFER\_BIT);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00221}00221 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00222}00222         \textcolor{keywordtype}{float} currentFrame = (float)currentTime;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00223}00223         \mbox{\hyperlink{main_8cpp_a1a61318ed6aa02b4ff346e7eb8f68891}{deltaTime}} = currentFrame -\/ \mbox{\hyperlink{main_8cpp_a518a497d888d805d5f368bbb91b54a6c}{lastFrame}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00224}00224         \mbox{\hyperlink{main_8cpp_a518a497d888d805d5f368bbb91b54a6c}{lastFrame}} = currentFrame;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00225}00225 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00226}00226         myProgram.\mbox{\hyperlink{class_c_g_1_1_program_a9a666b59746a1e4a18a7f6161f6e8761}{use}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00227}00227         glm::mat4 projection = glm::perspective(glm::radians(\mbox{\hyperlink{main_8cpp_abfd94a01fc71278021802ca0d1e25e16}{fov}}), \mbox{\hyperlink{main_8cpp_aaa07b9226372fe795cd4c73aa1f2071a}{screen\_aspect}}, 0.1f, 100.0f);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00228}00228         glm::mat4 view = glm::lookAt(\mbox{\hyperlink{main_8cpp_afcee0af49198577e804d3741b319382e}{cameraPos}}, \mbox{\hyperlink{main_8cpp_afcee0af49198577e804d3741b319382e}{cameraPos}} + \mbox{\hyperlink{main_8cpp_a8cfa8e18baf093b4aa4f589daf057024}{cameraFront}}, \mbox{\hyperlink{main_8cpp_a2efc1e4b509cc5f0c2bffdfc7deb98b3}{worldUp}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00229}00229 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00230}00230         glm::mat4 model = glm::mat4(1.0f);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00231}00231         model = glm::scale(model, glm::vec3(0.3f));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00232}00232         model = glm::translate(model, glm::vec3(0.0f, -\/1.0f, 0.0f));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00233}00233 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00234}00234         myProgram.\mbox{\hyperlink{class_c_g_1_1_program_a55ac953af0ce9fd8e9048eb837e4cc50}{setMat4}}(\textcolor{stringliteral}{"{}projection\_matrix"{}}, projection);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00235}00235         myProgram.\mbox{\hyperlink{class_c_g_1_1_program_a55ac953af0ce9fd8e9048eb837e4cc50}{setMat4}}(\textcolor{stringliteral}{"{}view\_matrix"{}}, view);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00236}00236         myProgram.\mbox{\hyperlink{class_c_g_1_1_program_a55ac953af0ce9fd8e9048eb837e4cc50}{setMat4}}(\textcolor{stringliteral}{"{}model\_matrix"{}}, model);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00237}00237 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00238}00238         myProgram.\mbox{\hyperlink{class_c_g_1_1_program_a65e47e744bd47f8b150843df80c65232}{setVec3}}(\textcolor{stringliteral}{"{}lightPos1"{}}, glm::vec3(4.0f, 5.0f, -\/10.0f));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00239}00239         myProgram.\mbox{\hyperlink{class_c_g_1_1_program_a65e47e744bd47f8b150843df80c65232}{setVec3}}(\textcolor{stringliteral}{"{}lightPos2"{}}, glm::vec3(-\/5.0f, 5.0f, 10.0f));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00240}00240         myProgram.\mbox{\hyperlink{class_c_g_1_1_program_a65e47e744bd47f8b150843df80c65232}{setVec3}}(\textcolor{stringliteral}{"{}viewPos"{}}, glm::vec3(\mbox{\hyperlink{main_8cpp_afcee0af49198577e804d3741b319382e}{cameraPos}}));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00241}00241 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00242}00242         door.\mbox{\hyperlink{class_c_g_1_1_importer_a59fa7840a541740e07911c5d27f94e48}{draw}}(myProgram);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00243}00243 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00244}00244         model = glm::scale(glm::mat4(1.0f), glm::vec3(0.2f));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00245}00245         model = glm::rotate(model, 3.14f, glm::vec3(0.0f, 1.0f, 0.0f));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00246}00246         model = glm::translate(model, glm::vec3(5.0f, 1.0f, -\/10.0f));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00247}00247         myProgram.\mbox{\hyperlink{class_c_g_1_1_program_a55ac953af0ce9fd8e9048eb837e4cc50}{setMat4}}(\textcolor{stringliteral}{"{}model\_matrix"{}}, model);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00248}00248 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00249}00249         man.\mbox{\hyperlink{class_c_g_1_1_importer_a59fa7840a541740e07911c5d27f94e48}{draw}}(myProgram);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00250}00250 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00251}00251         model = glm::mat4(1.0f);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00252}00252         model = glm::translate(model, glm::vec3(3.0f, -\/0.5f, 6.0f));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00253}00253         myProgram.\mbox{\hyperlink{class_c_g_1_1_program_a55ac953af0ce9fd8e9048eb837e4cc50}{setMat4}}(\textcolor{stringliteral}{"{}model\_matrix"{}}, model);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00254}00254 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00255}00255         table.\mbox{\hyperlink{class_c_g_1_1_importer_a59fa7840a541740e07911c5d27f94e48}{draw}}(myProgram);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00256}00256 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00257}00257         model = glm::mat4(1.0f);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00258}00258         myProgram.\mbox{\hyperlink{class_c_g_1_1_program_a55ac953af0ce9fd8e9048eb837e4cc50}{setMat4}}(\textcolor{stringliteral}{"{}model\_matrix"{}}, model);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00259}00259 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00260}00260         myPlane.\mbox{\hyperlink{class_c_g_1_1_mesh_a497801e3397453b0a77e3a9e6d5e89cb}{draw}}(myProgram);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00261}00261         \textcolor{comment}{// process inputs}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00262}00262         \textcolor{keyword}{const} \textcolor{keywordtype}{float} cameraSpeed = 3.5f * \mbox{\hyperlink{main_8cpp_a1a61318ed6aa02b4ff346e7eb8f68891}{deltaTime}};  \textcolor{comment}{// adjust accordingly}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00263}00263 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00264}00264         \textcolor{comment}{// simulate pan here}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00265}00265         \textcolor{keywordflow}{if} (glfwGetKey(window, GLFW\_KEY\_W) == GLFW\_PRESS) \mbox{\hyperlink{main_8cpp_afcee0af49198577e804d3741b319382e}{cameraPos}} += cameraSpeed * \mbox{\hyperlink{main_8cpp_a8cfa8e18baf093b4aa4f589daf057024}{cameraFront}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00266}00266         \textcolor{keywordflow}{if} (glfwGetKey(window, GLFW\_KEY\_S) == GLFW\_PRESS) \mbox{\hyperlink{main_8cpp_afcee0af49198577e804d3741b319382e}{cameraPos}} -\/= cameraSpeed * \mbox{\hyperlink{main_8cpp_a8cfa8e18baf093b4aa4f589daf057024}{cameraFront}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00267}00267         \textcolor{keywordflow}{if} (glfwGetKey(window, GLFW\_KEY\_A) == GLFW\_PRESS) \mbox{\hyperlink{main_8cpp_afcee0af49198577e804d3741b319382e}{cameraPos}} -\/= cameraSpeed * \mbox{\hyperlink{main_8cpp_a0b1e93bd80f5dab9ddf2262e7c2206a5}{cameraRight}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00268}00268         \textcolor{keywordflow}{if} (glfwGetKey(window, GLFW\_KEY\_D) == GLFW\_PRESS) \mbox{\hyperlink{main_8cpp_afcee0af49198577e804d3741b319382e}{cameraPos}} += cameraSpeed * \mbox{\hyperlink{main_8cpp_a0b1e93bd80f5dab9ddf2262e7c2206a5}{cameraRight}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00269}00269         \textcolor{keywordflow}{if} (glfwGetKey(window, GLFW\_KEY\_LEFT\_CONTROL) == GLFW\_PRESS) \mbox{\hyperlink{main_8cpp_afcee0af49198577e804d3741b319382e}{cameraPos}} -\/= cameraSpeed * \mbox{\hyperlink{main_8cpp_a36d5c153de5e9cf5a0efb0e7d9986683}{cameraUp}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00270}00270         \textcolor{keywordflow}{if} (glfwGetKey(window, GLFW\_KEY\_SPACE) == GLFW\_PRESS) \mbox{\hyperlink{main_8cpp_afcee0af49198577e804d3741b319382e}{cameraPos}} += cameraSpeed * \mbox{\hyperlink{main_8cpp_a36d5c153de5e9cf5a0efb0e7d9986683}{cameraUp}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00271}00271 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00272}00272         \textcolor{comment}{// simulate roll, q and e}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00273}00273         \textcolor{keywordtype}{float} rollSpeed = 50.0f * \mbox{\hyperlink{main_8cpp_a1a61318ed6aa02b4ff346e7eb8f68891}{deltaTime}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00274}00274 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00275}00275         \textcolor{keywordflow}{if} (glfwGetKey(window, GLFW\_KEY\_Q) == GLFW\_PRESS)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00276}00276             \mbox{\hyperlink{main_8cpp_a2efc1e4b509cc5f0c2bffdfc7deb98b3}{worldUp}} = glm::mat3(glm::rotate(glm::mat4(1.0f), -\/glm::radians(rollSpeed), \mbox{\hyperlink{main_8cpp_a8cfa8e18baf093b4aa4f589daf057024}{cameraFront}})) * \mbox{\hyperlink{main_8cpp_a36d5c153de5e9cf5a0efb0e7d9986683}{cameraUp}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00277}00277         \textcolor{keywordflow}{if} (glfwGetKey(window, GLFW\_KEY\_E) == GLFW\_PRESS)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00278}00278             \mbox{\hyperlink{main_8cpp_a2efc1e4b509cc5f0c2bffdfc7deb98b3}{worldUp}} = glm::mat3(glm::rotate(glm::mat4(1.0f), glm::radians(rollSpeed), \mbox{\hyperlink{main_8cpp_a8cfa8e18baf093b4aa4f589daf057024}{cameraFront}})) * \mbox{\hyperlink{main_8cpp_a36d5c153de5e9cf5a0efb0e7d9986683}{cameraUp}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00279}00279 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00280}00280         \mbox{\hyperlink{main_8cpp_a0b1e93bd80f5dab9ddf2262e7c2206a5}{cameraRight}} = glm::normalize(glm::cross(\mbox{\hyperlink{main_8cpp_a8cfa8e18baf093b4aa4f589daf057024}{cameraFront}}, \mbox{\hyperlink{main_8cpp_a2efc1e4b509cc5f0c2bffdfc7deb98b3}{worldUp}}));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00281}00281         \mbox{\hyperlink{main_8cpp_a36d5c153de5e9cf5a0efb0e7d9986683}{cameraUp}} = glm::normalize(glm::cross(\mbox{\hyperlink{main_8cpp_a0b1e93bd80f5dab9ddf2262e7c2206a5}{cameraRight}}, \mbox{\hyperlink{main_8cpp_a8cfa8e18baf093b4aa4f589daf057024}{cameraFront}}));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00282}00282 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00283}00283         glfwPollEvents();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00284}00284         glfwSwapInterval(1);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00285}00285         glfwSwapBuffers(window);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00286}00286     \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00287}00287 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00288}00288     \textcolor{comment}{// shutdown}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00289}00289     myProgram.\mbox{\hyperlink{class_c_g_1_1_program_a1363829b180d7c2f0da293ddca075a73}{shutdown}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00290}00290     myPlane.\mbox{\hyperlink{class_c_g_1_1_mesh_a420099219a84367faa00f2f750637c1e}{shutdown}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00291}00291     door.\mbox{\hyperlink{class_c_g_1_1_importer_a10c49220c70dafac494ec1aefe1a0080}{shutdown}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00292}00292     man.\mbox{\hyperlink{class_c_g_1_1_importer_a10c49220c70dafac494ec1aefe1a0080}{shutdown}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00293}00293     table.\mbox{\hyperlink{class_c_g_1_1_importer_a10c49220c70dafac494ec1aefe1a0080}{shutdown}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00294}00294     glfwDestroyWindow(window);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00295}00295     glfwTerminate();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00296}00296 \}}
+
+\end{DoxyCode}
